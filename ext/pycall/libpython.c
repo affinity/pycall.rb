@@ -218,7 +218,6 @@ pycall_init_libpython_api_table(VALUE libpython_handle)
     INIT_API_TABLE_ENTRY2(PyUnicode_FromFormatV, PyUnicodeUCS2_FromFormatV, required);
   }
 
-  INIT_API_TABLE_ENTRY(PyGILState_Check, required);
   INIT_API_TABLE_ENTRY(PyGILState_Ensure, required);
   INIT_API_TABLE_ENTRY(PyGILState_Release, required);
 }

@@ -139,14 +139,9 @@ pycall_pyptr_free(void *ptr)
   }
 #endif /* PYCALL_DEBUG_DUMP_REFCNT */
 
-  if (Py_API(PyGILState_Check())) {
-    pycall_Py_DecRef(pyobj);
-  }
-  else {
-    PyGILState_STATE gstate = Py_API(PyGILState_Ensure)();
-    pycall_Py_DecRef(pyobj);
-    Py_API(PyGILState_Release)(gstate);
-  }
+  PyGILState_STATE gstate = Py_API(PyGILState_Ensure)();
+  pycall_Py_DecRef(pyobj);
+  Py_API(PyGILState_Release)(gstate);
 }
 
 static size_t _PySys_GetSizeOf(PyObject *);
